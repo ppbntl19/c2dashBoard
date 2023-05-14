@@ -1,0 +1,97 @@
+{
+  "name": "c2-cms-admin",
+  "version": "1.0.0",
+  "description": "A vue cms admin. An out-of-box UI solution for enterprise applications. Newest development stack of vue.",
+  "author": "Pooran Prakash <cc@msn.com>",
+  "scripts": {
+    "lint": "vue-cli-service lint",
+    "build:prod": "vue-cli-service build",
+    "build:stage": "vue-cli-service build --mode staging",
+    "dev": "vue-cli-service serve"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-vue2": "^3.0.1",
+    "axios": "^1.4.0",
+    "ckeditor5-custom-build": "github:ppbntl19/ckeditorcustom#main",
+    "clipboard": "2.0.4",
+    "core-js": "3.19.0",
+    "dayjs": "^1.8.30",
+    "element-ui": "2.13.2",
+    "fuse.js": "3.4.4",
+    "js-cookie": "2.2.0",
+    "normalize.css": "7.0.0",
+    "nprogress": "0.2.0",
+    "path": "^0.12.7",
+    "path-to-regexp": "2.4.0",
+    "pinyin": "2.9.0",
+    "process": "^0.11.10",
+    "screenfull": "4.2.0",
+    "script-loader": "0.7.2",
+    "vue": "2.6.10",
+    "vue-count-to": "1.0.13",
+    "vue-i18n": "7.3.2",
+    "vue-router": "3.0.2",
+    "vue-style-loader": "^4.1.3",
+    "vuex": "3.1.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.21.3",
+    "@vue/cli-plugin-babel": "~5.0.8",
+    "@vue/cli-plugin-eslint": "5.0.8",
+    "@vue/cli-plugin-unit-jest": "5.0.8",
+    "@vue/cli-service": "~5.0.8",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "autoprefixer": "^10.4.5",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^29.5.0",
+    "babel-plugin-dynamic-import-node": "2.3.3",
+    "chalk": "2.4.2",
+    "console-browserify": "^1.2.0",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.11.0",
+    "eslint-webpack-plugin": "^4.0.1",
+    "html-webpack-plugin": "^5.5.1",
+    "https-browserify": "^1.0.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^13.2.2",
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.4.23",
+    "postcss-loader": "^7.3.0",
+    "prettier": "^2.2.1",
+    "querystring-es3": "^0.2.1",
+    "sass": "1.26.2",
+    "sass-loader": "8.0.2",
+    "script-ext-html-webpack-plugin": "2.1.3",
+    "stream-browserify": "^3.0.0",
+    "style-loader": "^3.3.2",
+    "svg-sprite-loader": "^6.0.11",
+    "svgo": "^3.0.2",
+    "url": "^0.11.0",
+    "util": "^0.12.5",
+    "vue-template-compiler": "2.6.10"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "bugs": {
+    "url": "https://github.com"
+  },
+  "engines": {
+    "node": ">=8.9",
+    "npm": ">= 3.0.0"
+  },
+  "license": "AGPL-3.0",
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/"
+  }
+}
