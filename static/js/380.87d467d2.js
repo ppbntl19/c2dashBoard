@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunkc2_cms_admin"]=self["webpackChunkc2_cms_admin"]||[]).push([[380],{6380:function(e,r,n){n.r(r),n.d(r,{default:function(){return i}});var t,u,c={created(){const{params:e,query:r}=this.$route,{path:n}=e;this.$router.replace({path:"/"+n,query:r})},render:function(e){return e()}},a=c,s=n(1001),l=(0,s.Z)(a,t,u,!1,null,null,null),i=l.exports}}]);
