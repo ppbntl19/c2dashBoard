@@ -89,6 +89,7 @@ export default {
         name: '',
         route: '',
         description: '',
+        pic: '',
         status: true,
         createdBy: this.$store.state.user.userInfo.id
       },
@@ -168,7 +169,7 @@ export default {
     },
     // On Upload Change
     onUploadStart(file) {
-      uploadImage(file.file, 'banner', 'banner').then((data) => {
+      uploadImage(file.file, 'pic', 'pic').then((data) => {
         this.formData.pic = data.url
       })
     },
