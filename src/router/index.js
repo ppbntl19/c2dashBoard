@@ -13,6 +13,7 @@ import Layout from '@/layout'
 import aboutRouter from './modules/about'
 import userRouter from './modules/user'
 import productRouter from './modules/product'
+import postRouter from './modules/post'
 import homeRouter from './modules/home'
 
 /**
@@ -89,6 +90,7 @@ export const constantRoutes = [
   aboutRouter,
 
   productRouter,
+  postRouter,
   userRouter,
 ]
 

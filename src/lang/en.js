@@ -65,7 +65,7 @@ export default {
     profile: 'Profile',
     about: 'About',
     listManagement: 'List Management',
-    categoryManagement: 'Category Management',
+    
 
     // home
     home: 'Home',
@@ -97,6 +97,16 @@ export default {
     productUpdate: 'Update Product',
     productCategoryCreate: 'Create Product Category',
     productCategoryUpdate: 'Update Product Category',
+    categoryManagement: 'Category Management',
+
+    // product
+    post: 'Post',
+    postListManagement: 'Post List Management',
+    postCreate: 'Create Post',
+    postUpdate: 'Update Post',
+    postTagCreate: 'Create Post Tag',
+    postTagsUpdate: 'Update Post Tag',
+    tagManagement: 'Tag Management',
 
     // admin
     user: 'User',

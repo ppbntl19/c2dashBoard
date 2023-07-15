@@ -7,7 +7,7 @@
       label-width="140px"
     >
       </el-form-item>
-      <el-form-item label="Category Name" prop="name">
+      <el-form-item label="Tag Name" prop="name">
         <el-input v-model="formData.name"></el-input>
       </el-form-item>
 
@@ -19,34 +19,6 @@
         <el-input v-model="formData.description"></el-input>
       </el-form-item>
 
-      <el-form-item label="Category Picture" prop="pic">
-        <el-upload
-          action=""
-          :http-request="onUploadStart"
-          list-type="picture-card"
-          name="upload"
-          :auto-upload="true"
-          :file-list="uploadFile.list"
-          :limit="uploadFile.limit"
-          :on-success="onUploadChange"
-          :on-remove="onRemoveChange"
-          :on-exceed="onUploadExceed"
-          drag
-          multiple
-          :headers="uploadHeaders"
-        >
-          <i slot="default" class="el-icon-plus"></i>
-        </el-upload>
-      </el-form-item>
-
-      <el-form-item label="Content" prop="content">
-        <ckeditor :editor="editor" v-model="formData.content"> </ckeditor>
-      </el-form-item>
-
-      <el-form-item label="Status" prop="status">
-        <el-switch v-model="formData.status"></el-switch>
-        {{ formData.status  ? 'On' : 'Disable' }}
-      </el-form-item>
 
       <el-form-item>
         <el-button type="primary" @click="submitForm('validateForm')"
@@ -58,7 +30,7 @@
   </div>
 </template>
 <script>
-import { getDetail, create, update } from '@/api/product-category'
+import { getDetail, create, update } from '@/api/tag'
 import { config } from '../config'
 import { getToken } from '@/utils/auth'
 
@@ -69,7 +41,7 @@ const Authorization = `Bearer ${token}`
 
 
 export default {
-  name: 'ProductCreateUpdate',
+  name: 'PostCreateUpdate',
   filters: {},
   props: {
     type: {
@@ -93,14 +65,11 @@ export default {
         name: '',
         route: '',
         description: '',
-        pic: '',
-        content: '',
-        status: true,
         createdBy: this.$store.state.user.userInfo.id
       },
       rules: {
         name: [
-          { required: true, message: 'Please enter a category', trigger: 'blur' },
+          { required: true, message: 'Please enter a tag', trigger: 'blur' },
           {
             min: 1,
             max: 40,
@@ -108,9 +77,6 @@ export default {
             trigger: 'blur',
           },
         ],
-        content: [
-        { required: true, message: 'Please enter a content', trigger: 'blur' }
-         ],
         route: [
           { required: true, message: 'Please enter a Route', trigger: 'blur' },
           {
@@ -121,30 +87,15 @@ export default {
           },
         ],
         description: [
-          { required: true, message: 'Please enter a Description', trigger: 'blur' },
+          { required: false, message: 'Please enter a Description', trigger: 'blur' },
           {
             min: 1,
             max: 1000,
             message: '1 to 1000 characters long',
             trigger: 'blur',
           },
-        ],
-        pic: [
-          {
-            required: true,
-            message: 'Please upload a picture',
-            trigger: 'change',
-          },
         ]
-      },
-      // Upload file
-      uploadHeaders: {
-        Authorization,
-      },
-      uploadFile: {
-        list: [],
-        limit: 1,
-      },
+      }
     }
   },
   watch: {},
@@ -175,35 +126,16 @@ export default {
     onUploadChange(res) {
       this.formData.pic = res.path
     },
-    // On Upload Change
-    onUploadStart(file) {
-      uploadImage(file.file, 'pic', 'pic').then((data) => {
-        this.formData.pic = data.url
-      })
-    },
-    // on file remove
-    onRemoveChange(file) {
-      let res = file.response || {}
-      this.uploadFile.list = [];
-      this.formData.pic ='';
-    },
-    // On Upload Exceed
-    onUploadExceed() {
-      this.$message({
-        message: 'Exceeded upload quantity',
-        type: 'error',
-      })
-      console.log('onUploadExceed')
-    },
 
-    // Choice category change
-    onChoiceCategory(value) {
-      console.log('onChoiceCategory', value)
+
+    // Choice tag change
+    onChoiceTag(value) {
+      console.log('onChoiceTag', value)
       this.formData.parent = value
     },
 
-    // Reset Category
-    onResetCategory() {
+    // Reset Tag
+    onResetTag() {
       this.formData.parent = []
     },
 
@@ -217,14 +149,14 @@ export default {
       }
     },
 
-    // Default Category
-    defaultCategoryParent() {
+    // Default Tag
+    defaultTagParent() {
       let parent = this.formData.parent || []
       return parent.length > 0 ? parent : ['0']
     },
 
-    // Has Category
-    hasCategory() {
+    // Has Tag
+    hasTag() {
       let parent = this.formData.parent || []
       let id = this.formData.id
       console.log(parent, id)
@@ -274,14 +206,6 @@ export default {
 
       getDetail(this.querys.id).then(res => {
         this.loading = false
-
-        const { pic } = res
-        if (pic) {
-          pic && this.uploadFile.list.push({
-            name: pic,
-            url: pic,
-          })
-        }
         this.formData = res
       })
     },

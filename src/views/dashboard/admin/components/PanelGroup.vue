@@ -17,6 +17,22 @@
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
+      <div class="card-panel" @click="handleSetLineChartData('post')">
+        <div class="card-panel-icon-wrapper icon-people">
+          <svg-icon icon-class="example" class-name="card-panel-icon" />
+        </div>
+        <div class="card-panel-description">
+          <div class="card-panel-text">Posts</div>
+          <count-to
+            :start-val="0"
+            :end-val="postsCount"
+            :duration="1"
+            class="card-panel-num"
+          />
+        </div>
+      </div>
+    </el-col>
+    <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('home/banner')">
         <div class="card-panel-icon-wrapper icon-message">
           <svg-icon icon-class="documentation" class-name="card-panel-icon" />
@@ -71,6 +87,7 @@
 import CountTo from 'vue-count-to'
 import {
   productsCount,
+  postsCount,
   bannerCount,
   aboutCount,
   usersCount,
@@ -83,6 +100,7 @@ export default {
   data() {
     return {
       productsCount: 0,
+      postsCount:0,
       bannerCount: 0,
       aboutCount: 0,
       usersCount: 0,
@@ -90,6 +108,7 @@ export default {
   },
   created() {
     this.getProductsCount()
+    this.getPostsCount()
     this.getBannerCount()
     this.getAboutCount()
     this.getUsersCount()
@@ -102,6 +121,11 @@ export default {
     getProductsCount() {
       productsCount().then((res) => {
         this.productsCount = res
+      })
+    },
+    getPostsCount() {
+      postsCount().then((res) => {
+        this.postsCount = res
       })
     },
     // banner

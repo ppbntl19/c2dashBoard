@@ -7,6 +7,13 @@ export function productsCount() {
   })
 }
 
+export function postsCount() {
+  return request({
+    url: '/posts/list/count',
+    method: 'get',
+  })
+}
+
 export function bannerCount() {
   return request({
     url: '/banner/list/count',
